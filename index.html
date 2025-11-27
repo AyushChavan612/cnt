@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIT Project Relevance - jQuery Version</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+      .project-card {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+      }
+      .tab-content {
+        border: 1px solid #dee2e6;
+        border-top: none;
+        padding: 20px;
+        background: white;
+        min-height: 150px; /* Keeps box size consistent */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container project-card">
+      <h2 class="text-center mb-4">Relevance of Projects in VIT</h2>
+
+      <ul class="nav nav-pills nav-fill" id="projectTabs">
+        <li class="nav-item">
+          <button class="nav-link active" data-target-tab="#sdp">SDP</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-target-tab="#edi">EDI</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-target-tab="#dt">DT</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-target-tab="#course">
+            Course Projects
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content mt-2">
+        <div class="tab-pane fade show active" id="sdp">
+          <h4>System Design Project (SDP)</h4>
+          <p>
+            <strong>Relevance:</strong> SDP is crucial for integrating knowledge
+            from various courses to build a comprehensive system. It simulates
+            real-world software development lifecycles, teaching students about
+            architecture, deployment, and full-stack development.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="edi">
+          <h4>Engineering Design & Innovation (EDI)</h4>
+          <p>
+            <strong>Relevance:</strong> EDI focuses on the 'Maker' culture. It
+            encourages students to move beyond theory and build physical or
+            complex software prototypes. It is essential for developing an
+            entrepreneurial mindset and understanding product feasibility.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="dt">
+          <h4>Design Thinking (DT)</h4>
+          <p>
+            <strong>Relevance:</strong> Design Thinking is not just about
+            coding; it is about problem-solving. It teaches students to
+            Empathize, Define, Ideate, Prototype, and Test. This framework is
+            vital for creating user-friendly products that actually solve human
+            problems.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="course">
+          <h4>Course Projects</h4>
+          <p>
+            <strong>Relevance:</strong> These are subject-specific
+            implementations (e.g., creating a chat app for Computer Networks).
+            They reinforce the specific concepts learned in a single semester
+            and ensure practical competency in that subject.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Listen for a 'click' on any button with class 'nav-link'
+        $(".nav-link").click(function () {
+          // A. VISUALS: Switch the active button
+          $(".nav-link").removeClass("active"); // Remove blue highlight from all
+          $(this).addClass("active"); // Add blue highlight to clicked one
+
+          // B. LOGIC: Switch the content
+          // 1. Hide all content panes
+          $(".tab-pane").removeClass("show active");
+
+          // 2. Find which tab to open (we read the custom attribute we added)
+          const targetId = $(this).attr("data-target-tab");
+
+          // 3. Show that specific pane with a fade effect
+          $(targetId).addClass("show active");
+        });
+      });
+    </script>
+  </body>
+</html>
